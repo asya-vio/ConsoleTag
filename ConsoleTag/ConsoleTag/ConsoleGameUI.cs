@@ -8,26 +8,23 @@ namespace ConsoleTag
 {
     class ConsoleGameUI
     {
-        Game2 game;
-        //Game3 Play3;
+        IPlayable game;
 
-        public ConsoleGameUI(Game2 game)
+
+        public ConsoleGameUI(IPlayable game)
         {
             this.game = game;
         }
 
-        //public ConsoleGameUI(Game3 Play3)
-        //{
-        //}
 
         public void PrintBoard()
         {
-            for (int i = 0; i < game.BoardSize; i++)
+            for (int i = 0; i < ((Game2)game).BoardSize; i++)
             {
-                for (int j = 0; j < game.BoardSize; j++)
+                for (int j = 0; j < ((Game2)game).BoardSize; j++)
                 {
-                    if (game[i, j] / 10 > 0) Console.Write("{0} ", game[i, j]);
-                    else Console.Write("{0}  ", game[i, j]);
+                    if (((Game2)game)[i, j] / 10 > 0) Console.Write("{0} ", ((Game2)game)[i, j]);
+                    else Console.Write("{0}  ", ((Game2)game)[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -39,7 +36,6 @@ namespace ConsoleTag
             int value = -1;
             while (value == -1)
             {
-                Console.Clear();
                 Console.WriteLine("Введите номер сдвигаемой фишки");
 
                 if (Int32.TryParse(Console.ReadLine(), out value))
@@ -53,6 +49,37 @@ namespace ConsoleTag
             }
             return value;
         }
+
+        public void PlayGame()
+        {
+            int step = 0;
+            while (!((Game2)game).IsFinished())
+            {
+                Console.Clear();
+                PrintBoard();
+
+                int shiftValue = ReadShiftValue();
+
+                try
+                {
+                    ((Game2)game).Shift(shiftValue);
+                    step++;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine("{0}", ex.Message);
+                    Console.ReadLine();
+                }
+
+            }
+
+            Console.Clear();
+            PrintBoard();
+
+            Console.WriteLine("Игра завершена за {0} шагов! Поздравляю!", step);
+            Console.ReadLine();
+        }
+
 
     }
 }

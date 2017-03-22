@@ -12,7 +12,7 @@ namespace ConsoleTag
         {
             int[] gameArr = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0 };
 
-            int[] gameArr2 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+            int[] gameArr2 = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0, 15};
 
             Game3 game3 = null;
             try
@@ -40,9 +40,12 @@ namespace ConsoleTag
 
             ConsoleGameUI game3UI = new ConsoleGameUI(game3);
 
-            game2UI.PrintBoard();
+            game2UI.PlayGame();
 
-            game3UI.PrintBoard();
+            game3UI.PlayGame();
+
+
+
         }
     }
 }
