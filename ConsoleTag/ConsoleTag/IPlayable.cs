@@ -8,9 +8,14 @@ namespace ConsoleTag
 {
     interface IPlayable
     {
+        int BoardSize { get; }
+
         void Randomize();
 
         bool IsFinished();
+
+        int this[int I, int J] { get;}
+
 
         void Shift(int value);
     }

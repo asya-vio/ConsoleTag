@@ -10,7 +10,7 @@ namespace ConsoleTag
     class Game
     {
         protected readonly int counter;
-        public readonly int BoardSize;
+        public int BoardSize { get; }
         public int[,] GameBoard;
         public Point[] ValueLocation;
         //I - строка, J - столбец

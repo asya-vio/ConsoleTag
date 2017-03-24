@@ -19,12 +19,12 @@ namespace ConsoleTag
 
         public void PrintBoard()
         {
-            for (int i = 0; i < ((Game2)game).BoardSize; i++)
+            for (int i = 0; i < game.BoardSize; i++)
             {
-                for (int j = 0; j < ((Game2)game).BoardSize; j++)
+                for (int j = 0; j < game.BoardSize; j++)
                 {
-                    if (((Game2)game)[i, j] / 10 > 0) Console.Write("{0} ", ((Game2)game)[i, j]);
-                    else Console.Write("{0}  ", ((Game2)game)[i, j]);
+                    if (game[i, j] / 10 > 0) Console.Write("{0} ", game[i, j]);
+                    else Console.Write("{0}  ", game[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -53,7 +53,7 @@ namespace ConsoleTag
         public void PlayGame()
         {
             int step = 0;
-            while (!((Game2)game).IsFinished())
+            while (!game.IsFinished())
             {
                 Console.Clear();
                 PrintBoard();
@@ -62,7 +62,7 @@ namespace ConsoleTag
 
                 try
                 {
-                    ((Game2)game).Shift(shiftValue);
+                    game.Shift(shiftValue);
                     step++;
                 }
                 catch (ArgumentException ex)
