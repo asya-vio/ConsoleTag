@@ -8,23 +8,23 @@ namespace ConsoleTag
 {
     class ConsoleGameUI
     {
-        IPlayable game;
+        IPlayable play;
 
 
-        public ConsoleGameUI(IPlayable game)
+        public ConsoleGameUI(IPlayable play)
         {
-            this.game = game;
+            this.play = play;
         }
 
 
         public void PrintBoard()
         {
-            for (int i = 0; i < game.BoardSize; i++)
+            for (int i = 0; i < play.BoardSize; i++)
             {
-                for (int j = 0; j < game.BoardSize; j++)
+                for (int j = 0; j < play.BoardSize; j++)
                 {
-                    if (game[i, j] / 10 > 0) Console.Write("{0} ", game[i, j]);
-                    else Console.Write("{0}  ", game[i, j]);
+                    if (play[i, j] / 10 > 0) Console.Write("{0} ", play[i, j]);
+                    else Console.Write("{0}  ", play[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -53,7 +53,7 @@ namespace ConsoleTag
         public void StartGame()
         {
             int step = 0;
-            while (!game.IsFinished())
+            while (!play.IsFinished())
             {
                 Console.Clear();
                 PrintBoard();
@@ -62,7 +62,7 @@ namespace ConsoleTag
 
                 try
                 {
-                    game.Shift(shiftValue);
+                    play.Shift(shiftValue);
                     step++;
                 }
                 catch (ArgumentException ex)
