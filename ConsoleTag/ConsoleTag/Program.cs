@@ -40,9 +40,9 @@ namespace ConsoleTag
 
             ConsoleGameUI game3UI = new ConsoleGameUI(game3);
 
-            game2UI.PlayGame();
+            game2UI.StartGame();
 
-            game3UI.PlayGame();
+            game3UI.StartGame();
 
 
 

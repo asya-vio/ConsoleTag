@@ -50,7 +50,7 @@ namespace ConsoleTag
             return value;
         }
 
-        public void PlayGame()
+        public void StartGame()
         {
             int step = 0;
             while (!game.IsFinished())
